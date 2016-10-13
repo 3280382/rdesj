@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd"
+	default-lazy-init="true">
+	<description>SpringSecurity</description>
+
+	<!-- http安全配置，TODO:使用数据库方式配置代替intercept-url -->
+	<sec:http access-denied-page="/403.jsp" auto-config="true" >
+		<sec:intercept-url pattern="/css/**" filters="none" />
+		<sec:intercept-url pattern="/images/**" filters="none" />
+		<sec:intercept-url pattern="/js/**" filters="none" />
+
+		<!--
+			<sec:intercept-url access="ROLE_DEMOAJAX_QUERY" pattern="/demo/demoajax/list**" />
+			<sec:intercept-url access="ROLE_DEMOAJAX_QUERY" pattern="/demo/demoajax/show**" />
+			<sec:intercept-url access="ROLE_DEMOAJAX_QUERY" pattern="/demo/demoajax/load**" />
+			<sec:intercept-url access="ROLE_DEMOAJAX_QUERY" pattern="/demo/demoajax/search**" />
+			<sec:intercept-url access="ROLE_DEMOAJAX_ADD" pattern="/demo/demoajax/add**" />
+			<sec:intercept-url access="ROLE_DEMOAJAX_ADD" pattern="/demo/demoajax/save**" />
+			<sec:intercept-url access="ROLE_DEMOAJAX_EDIT" pattern="/demo/demoajax/edit**" />
+			<sec:intercept-url access="ROLE_DEMOAJAX_EDIT" pattern="/demo/demoajax/update**" />
+			<sec:intercept-url access="ROLE_DEMOAJAX_REMOVE" pattern="/demo/demoajax/remove**" />
+			-->
+		<!--security.Authority -->
+		<sec:intercept-url access="ROLE_SEC_AUT_QUERY" pattern="/security/authority/list**" />
+		<sec:intercept-url access="ROLE_SEC_AUT_QUERY" pattern="/security/authority/show**" />
+		<sec:intercept-url access="ROLE_SEC_AUT_QUERY" pattern="/security/authority/load**" />
+		<sec:intercept-url access="ROLE_SEC_AUT_QUERY" pattern="/security/authority/search**" />
+		<sec:intercept-url access="ROLE_SEC_AUT_ADD" pattern="/security/authority/add**" />
+		<sec:intercept-url access="ROLE_SEC_AUT_ADD" pattern="/security/authority/save**" />
+		<sec:intercept-url access="ROLE_SEC_AUT_EDIT" pattern="/security/authority/edit**" />
+		<sec:intercept-url access="ROLE_SEC_AUT_EDIT" pattern="/security/authority/update**" />
+		<sec:intercept-url access="ROLE_SEC_AUT_REMOVE" pattern="/security/authority/remove**" />
+		<!--security.Organization -->
+		<sec:intercept-url access="ROLE_SEC_ORG_QUERY" pattern="/security/organization/list**" />
+		<sec:intercept-url access="ROLE_SEC_ORG_QUERY" pattern="/security/organization/show**" />
+		<sec:intercept-url access="ROLE_SEC_ORG_QUERY" pattern="/security/organization/load**" />
+		<sec:intercept-url access="ROLE_SEC_ORG_QUERY" pattern="/security/organization/search**" />
+		<sec:intercept-url access="ROLE_SEC_ORG_ADD" pattern="/security/organization/add**" />
+		<sec:intercept-url access="ROLE_SEC_ORG_ADD" pattern="/security/organization/save**" />
+		<sec:intercept-url access="ROLE_SEC_ORG_EDIT" pattern="/security/organization/edit**" />
+		<sec:intercept-url access="ROLE_SEC_ORG_EDIT" pattern="/security/organization/update**" />
+		<sec:intercept-url access="ROLE_SEC_ORG_REMOVE" pattern="/security/organization/remove**" />
+		<!--security.Role -->
+		<sec:intercept-url access="ROLE_SEC_ROLE_QUERY" pattern="/security/role/list**" />
+		<sec:intercept-url access="ROLE_SEC_ROLE_QUERY" pattern="/security/role/show**" />
+		<sec:intercept-url access="ROLE_SEC_ROLE_QUERY" pattern="/security/role/load**" />
+		<sec:intercept-url access="ROLE_SEC_ROLE_QUERY" pattern="/security/role/search**" />
+		<sec:intercept-url access="ROLE_SEC_ROLE_ADD" pattern="/security/role/add**" />
+		<sec:intercept-url access="ROLE_SEC_ROLE_ADD" pattern="/security/role/save**" />
+		<sec:intercept-url access="ROLE_SEC_ROLE_EDIT" pattern="/security/role/edit**" />
+		<sec:intercept-url access="ROLE_SEC_ROLE_EDIT" pattern="/security/role/update**" />
+		<sec:intercept-url access="ROLE_SEC_ROLE_REMOVE" pattern="/security/role/remove**" />
+		<!--security.SysUser -->
+		<sec:intercept-url access="ROLE_SEC_USER_RESETPWD" pattern="/security/sysuser/editPasswordAdmin**" />
+		<sec:intercept-url access="ROLE_SEC_USER_QUERY" pattern="/security/sysuser/list**" />
+		<sec:intercept-url access="ROLE_SEC_USER_QUERY" pattern="/security/sysuser/show**" />
+		<sec:intercept-url access="ROLE_SEC_USER_QUERY" pattern="/security/sysuser/load**" />
+		<sec:intercept-url access="ROLE_SEC_USER_QUERY" pattern="/security/sysuser/search**" />
+		<sec:intercept-url access="ROLE_SEC_USER_ADD" pattern="/security/sysuser/add**" />
+		<sec:intercept-url access="ROLE_SEC_USER_ADD" pattern="/security/sysuser/save**" />
+		<sec:intercept-url access="ROLE_SEC_USER_EDIT" pattern="/security/sysuser/edit**" />
+		<sec:intercept-url access="ROLE_SEC_USER_EDIT" pattern="/security/sysuser/update**" />
+		<sec:intercept-url access="ROLE_SEC_USER_REMOVE" pattern="/security/sysuser/remove**" />
+		<!--audit.AuditLog -->
+		<sec:intercept-url access="ROLE_AUD_LOG_QUERY" pattern="/audit/auditlog/list**" />
+		<sec:intercept-url access="ROLE_AUD_LOG_QUERY" pattern="/audit/auditlog/show**" />
+		<sec:intercept-url access="ROLE_AUD_LOG_QUERY" pattern="/audit/auditlog/load**" />
+		<sec:intercept-url access="ROLE_AUD_LOG_QUERY" pattern="/audit/auditlog/search**" />
+		<sec:intercept-url access="ROLE_AUD_LOG_ADD" pattern="/audit/auditlog/add**" />
+		<sec:intercept-url access="ROLE_AUD_LOG_ADD" pattern="/audit/auditlog/save**" />
+		<sec:intercept-url access="ROLE_AUD_LOG_EDIT" pattern="/audit/auditlog/edit**" />
+		<sec:intercept-url access="ROLE_AUD_LOG_EDIT" pattern="/audit/auditlog/update**" />
+		<sec:intercept-url access="ROLE_AUD_LOG_REMOVE" pattern="/audit/auditlog/remove**" />
+		<!--system.dictionary -->
+		<sec:intercept-url access="ROLE_SYS_DIC_QUERY" pattern="/system/dictionary/list**" />
+		<sec:intercept-url access="ROLE_SYS_DIC_QUERY" pattern="/system/dictionary/show**" />
+		<sec:intercept-url access="ROLE_SYS_DIC_QUERY" pattern="/system/dictionary/load**" />
+		<sec:intercept-url access="ROLE_SYS_DIC_QUERY" pattern="/system/dictionary/search**" />
+		<sec:intercept-url access="ROLE_SYS_DIC_ADD" pattern="/system/dictionary/add**" />
+		<sec:intercept-url access="ROLE_SYS_DIC_ADD" pattern="/system/dictionary/save**" />
+		<sec:intercept-url access="ROLE_SYS_DIC_EDIT" pattern="/system/dictionary/edit**" />
+		<sec:intercept-url access="ROLE_SYS_DIC_EDIT" pattern="/system/dictionary/update**" />
+		<sec:intercept-url access="ROLE_SYS_DIC_REMOVE" pattern="/system/dictionary/remove**" />
+						
+		<sec:form-login login-page="/security/sysuser/login.do" default-target-url="/system/main.do" authentication-failure-url="/security/sysuser/login.do?error=1" />
+		<sec:logout logout-success-url="/" />
+		<sec:session-management invalid-session-url="/security/sysuser/login.do?error=3">
+			<sec:concurrency-control max-sessions="3" error-if-maximum-exceeded="false" />
+		</sec:session-management>
+
+		<sec:custom-filter after="SECURITY_CONTEXT_FILTER" ref="autoLoginFilter" />
+	</sec:http>
+
+	<!-- 方法安全配置 ，TODO:@Controller注解与@Secured注解冲突，在Controller的方法注解将失效-->
+	<sec:global-method-security secured-annotations="enabled" />
+
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider user-service-ref="sysUserDetailsService">
+			<sec:password-encoder hash="md5" />
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+
+	<!--cicl用户查询服务-->
+	<bean id="sysUserDetailsService" class="com.cicl.frame.security.sysuser.service.SysUserDetailsService" />  	
+
+	<!-- 开发时自动登录的filter -->
+	<bean id="autoLoginFilter" class="com.cicl.frame.security.sysuser.web.filter.AutoLoginFilter">
+		<property name="enabled" value="${security.autologin.enabled}" />
+		<property name="defaultUserName" value="admin" />
+	</bean>
+
+	<!--JCaptcha验证码服务 
+		<bean id="captchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
+			<property name="captchaEngine">
+				<bean class="com.cicl.frame.core.web.filter.GMailEngine" /> 
+			</property>
+			<property name="minGuarantedStorageDelayInSeconds" value="180" />		
+		</bean>
+	-->	
+</beans>

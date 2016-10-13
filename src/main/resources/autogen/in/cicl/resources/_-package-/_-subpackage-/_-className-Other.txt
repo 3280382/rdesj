@@ -1,0 +1,45 @@
+for applicationContext-security.xml
+<sec:intercept-url access="ROLE_${authority.parentCode}_QUERY" pattern="/${package}/${className?lower_case}/list**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_QUERY" pattern="/${package}/${className?lower_case}/show**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_QUERY" pattern="/${package}/${className?lower_case}/load**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_QUERY" pattern="/${package}/${className?lower_case}/search**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_ADD" pattern="/${package}/${className?lower_case}/add**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_ADD" pattern="/${package}/${className?lower_case}/save**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_EDIT" pattern="/${package}/${className?lower_case}/edit**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_EDIT" pattern="/${package}/${className?lower_case}/update**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_REMOVE" pattern="/${package}/${className?lower_case}/remove**" />
+
+for applicationContext-resource.xml
+<value>message.vt.jsp.${package}.${className}</value>
+
+for SysUserDetailService test
+authorities.add(new GrantedAuthorityImpl("ROLE_${authority.parentCode}_QUERY"));
+authorities.add(new GrantedAuthorityImpl("ROLE_${authority.parentCode}_ADD"));
+authorities.add(new GrantedAuthorityImpl("ROLE_${authority.parentCode}_EDIT"));
+authorities.add(new GrantedAuthorityImpl("ROLE_${authority.parentCode}_REMOVE"));
+
+for initdata_zh
+insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(${authority.parentId}01,${authority.parentId},'查看','ROLE_${authority.parentCode}_QUERY');
+insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(${authority.parentId}02,${authority.parentId},'新增','ROLE_${authority.parentCode}_ADD');
+insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(${authority.parentId}03,${authority.parentId},'修改','ROLE_${authority.parentCode}_EDIT');
+insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(${authority.parentId}04,${authority.parentId},'删除','ROLE_${authority.parentCode}_REMOVE');
+
+for initdata_zh
+insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(${authority.parentId}01,${authority.parentId},'query','ROLE_${authority.parentCode}_QUERY');
+insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(${authority.parentId}02,${authority.parentId},'add','ROLE_${authority.parentCode}_ADD');
+insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(${authority.parentId}03,${authority.parentId},'edit','ROLE_${authority.parentCode}_EDIT');
+insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(${authority.parentId}04,${authority.parentId},'remove','ROLE_${authority.parentCode}_REMOVE');
+
+
+for main.jsp
+<h3><a href="#"><fmt:message key="global.menu.${package}" /><</a></h3>
+<div>
+	<ul>
+		<li><a style="color:#0033CC;" class="aopt" target="rightFrm" href="${'$'}{ctx}/${package}/${subpackage}/index.do"><fmt:message key="global.menu.${package}.${subpackage}" /></a></li>	
+	</ul>
+</div>
+
+for i18n:globalxxxx.properties
+global.menu.${package}=${package}
+global.menu.${package}.${subpackage}=${titleName.en}
+global.menu.${package}.${subpackage}=${titleName.zh_CN}

@@ -1,0 +1,221 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script src="../../lib/jquery/jquery-1.5.1.min.js" type="text/javascript"></script>
+		<script src="../jquery.tabs.js" type="text/javascript"></script>
+		<link href="../css/redmond/jquery-com-ui.css" type="text/css" rel="stylesheet"/>
+		<script type="text/javascript">
+			$(function(){
+				var tabs = $("#tabs").tabs({
+					"基础信息":{
+						onclick:function(){
+							alert(this.isCurrent());
+							this.onclickable = false;
+						}
+					},
+					"具体服务":{
+						onclick:function(){
+							alert(this.isCurrent());
+						},
+						onclickable:false
+					},
+					"拥有的服务契约":{
+						onclick:function(){
+							alert(this.content.html());
+						}
+					}
+				});
+				/*
+				tabs["基础信息"].select();
+				alert("你选择了‘基础信息’");
+				tabs["具体服务"].select();
+				alert("你选择了‘具体服务’");
+				tabs["拥有的服务契约"].select();
+				alert("你选择了‘拥有的服务契约’");
+				*/
+			});
+		</script>
+	</head>
+	<body marginheight=0 marginwidth=0 style="overflow:hidden;">
+		<table class="inlineDiv">
+			<tr><td class="inlineH"><h1>TAB页面<a href="">[返回]</a></h1></td></tr>
+			<tr><td class="inlineC">
+				<table class="inlineCT">
+					<tr>
+						<td class="inlineCL">
+							<table class="inlineCLC">
+								<tr><td class="inlineCLCS">
+									<table class="inSearch">
+										<tr>
+											<td colspan="2"><h1>搜索条件</h1></td>
+										</tr>
+										<tr>
+											<th nowrap="nowrap">服务节点编号</th>
+											<td><input type="text" class="iIpt iInS" maxlength="50" value=""/></td>
+										</tr>
+										<tr>
+											<th nowrap="nowrap">服务节点名称</th>
+											<td><input type="text" class="iIpt iInS" maxlength="50" value=""/></td>
+										</tr>
+										<tr>
+											<th nowrap="nowrap">部署抽象服务编号</th>
+											<td><input type="text" class="iIpt iInS" maxlength="50" value=""/></td>
+										</tr>
+										<tr>
+											<th></th>
+											<td><input name="" type="button"  value="" class="searchBtn marginTB5px" onmouseover="this.className='searchBtn_hover marginTB5px'" onmouseout="this.className='searchBtn marginTB5px'" title="搜索" /></td>
+										</tr>
+									</table>
+								</td></tr>
+								<tr><td class="inlineCLCR">
+									<table class="inResault">
+										<tr><td class="inRT"><h1>搜索结果</h1></td></tr>
+										<tr><td class="inRB">
+											
+										</td></tr>
+										<tr><td class="inRT" align="right">
+											<table class="pageS">
+												<tr>
+													<td class="nobr pageTDIcon"><a href="#"><b class="icoBack"  title="前一页"/></b></a></td>
+													<td class="pageSS"><b>1</b>/1</td>
+													<td class="nobr pageTDIcon"><a href="#"><b class="icoNext"  title="后一页"/></b></a></td>
+													<!--第一页无前一页按钮，末页无后一页按钮-->
+												</tr>
+											</table>
+										</td></tr>
+									</table>
+								</td></tr>
+							</table>
+						</td>
+						<td class="inlineCM">
+							<a href="" title="点击收缩左侧"><b class="icoOpenL"></b></a>
+							<!--<a href="" title="点击展开左侧"><b class="icoCloseL"></b></a>-->
+						</td>
+						<td class="inlineCR">
+							<div id="tabs">
+								<div name="基础信息" class="content">1</div>
+								<div name="具体服务" class="content">2</div>
+								<div name="拥有的服务契约" class="content">3
+		<div id="fmDetailDiv" name="fmDetailDiv" value="用户管理" class="content">
+			<ul>
+				<li id="detailToolBar" class="toolBar"></li>
+				<li>
+				<table class="editTB" class="content">
+					<tr>
+						<th style="width: 90px;">编号</th>
+						<td style="width: 200px;"><input disabled type="text" name="id" id="id" /></td>
+						<th style="width: 90px;">&nbsp;</th>
+						<td style="width: 200px;">&nbsp;</td>
+					</tr>
+					 
+					<tr>
+						<th><span class="fRed">*</span>姓名</th>
+						<td><input type="text" name="username" id="username" /></td>
+	  					<th><span class="fRed">*</span>登录账号</th>
+						<td><input type="text" name="loginName" id="loginName" /></td>
+					</tr>
+					  
+					<tr>
+	  					<th>邮箱</th>
+						<td><input type="text" name="email" id="email" /></td>
+						<th>&nbsp;</th>
+						<td><input type="hidden" name="password" id="password" /></td>
+					</tr>
+					  
+					<tr>
+						<th>状态</th>
+						<td>
+							<select name="status" id="status">
+								<option value=""></option>
+							
+								<option value="1">正常</option>
+							
+								<option value="0">停用</option>
+							 
+							</select>
+						</td>
+	  					<th>是否失效</th>
+						<td><input type="text" name="accountNonExpired" id="accountNonExpired" /></td>
+					</tr>
+					  
+					<tr>
+						<th>是否失效</th>
+						<td><input type="text" name="credentialsNonExpired" id="credentialsNonExpired" /></td>
+	  					<th>是否生效</th>
+						<td><input type="text" name="enabled" id="enabled" /></td>
+					</tr>
+					  
+					<tr>
+						<th>是否锁定</th>
+						<td><input type="text" name="accountNonLocked" id="accountNonLocked" /></td>
+	  					<th>部门</th>
+						<td>
+							<select name="organizationId" id="organizationId" >
+								<option value=""></option>
+							
+								<option parentId="10041" value="10040" >开发二部</option>
+							
+								<option parentId="10060" value="10043" >测试一部</option>
+							
+								<option parentId="10042" value="10044" >x部</option>
+							
+								<option parentId="10020" value="10041" >研发部</option>
+							
+								<option parentId="10020" value="10060" >测试部</option>
+							
+								<option parentId="10020" value="10042" >市场部</option>
+							
+								<option parentId="" value="10020" >中弈信息科技</option>
+							
+								<option parentId="10041" value="10000" >开发一部</option>
+							 
+							</select>
+						</td>
+					</tr>
+					  
+					<tr>
+						<th><span class="fRed">*</span>用户编码</th>
+						<td><input type="text" name="code" id="code" /></td>
+	  					<th><span class="fRed">*</span>手机</th>
+						<td><input type="text" name="mobile" id="mobile" /></td>
+					</tr>
+					  
+					<tr>
+						<th>电话</th>
+						<td><input type="text" name="phone" id="phone" /></td>
+	  					<th>地址</th>
+						<td><input type="text" name="address" id="address" /></td>
+					</tr>
+					  
+					<tr>
+						<th>描述</th>
+						<td><input type="text" name="description" id="description" /></td>
+						<th>&nbsp;</th>
+						<td><input type="hidden" name="recentPassword" id="recentPassword" /></td>
+					</tr>
+					  
+					<tr>
+						<th>是否登录</th>
+						<td><input type="text" name="isLogin" id="isLogin" /></td>
+	  					<th>尝试次数</th>
+						<td><input type="text" name="tryTimes" id="tryTimes" /></td>
+					</tr>
+					  
+					<tr>
+						<th>失败登录次数</th>
+						<td><input type="text" name="failLoginTimes" id="failLoginTimes" /></td>
+	 					<th>&nbsp;</th>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				</li>
+			</ul>
+			</div>
+								</div>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</body>
+</html>

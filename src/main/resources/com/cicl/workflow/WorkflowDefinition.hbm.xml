@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+	<hibernate-mapping default-lazy="false">
+		<class table="WORKFLOW_DEFINITION" name="com.cicl.frame.workflow.entity.WorkflowDefinition" dynamic-insert="true" dynamic-update="true" select-before-update="true">
+	    	<id column="ID" name="id" type="java.lang.Long">
+				<generator class="sequence">
+					<param name="sequence">SEQ_WORKFLOWDEFINITION_ID</param>
+				</generator>
+			</id>
+
+			<property name="name" type="java.lang.String">
+	            <column name="NAME" not-null="true"/>
+	        </property>
+	        
+	        <property name="nodeNumber" type="java.lang.Integer">
+	            <column name="NODE_NUMBER" not-null="true"/>
+	        </property>
+	        
+			<property name="definitionXml" type="text">
+	            <column name="XML"/>
+	        </property>
+	        
+			<property name="definitionSchema" type="text">
+	        	<column name="SCHEMA"/>
+	        </property>
+	        
+			<property name="version" type="java.lang.Integer">
+				<column name="VERSION" not-null="true"/>
+	        </property>
+	        
+	        <property name="createdDate" type="java.util.Date" />
+	    </class>
+	</hibernate-mapping>

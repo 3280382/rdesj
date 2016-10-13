@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+      "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <query name="TaskMgmtSession.findTaskInstancesByPoolActorId">
+    <![CDATA[
+      select distinct ti  
+      from org.jbpm.taskmgmt.exe.PooledActor pooledActor
+           join pooledActor.taskInstances ti 
+      where pooledActor.actorId like :actorId  
+         and ti.actorId is null  
+         and ti.end is null  
+         and ti.isCancelled = false
+    ]]>
+  </query>
+  
+  <query name="TaskMgmtSession.findTaskInstancesByPoolActorIds">
+    <![CDATA[
+      select distinct ti  
+      from org.jbpm.taskmgmt.exe.PooledActor pooledActor
+           join pooledActor.taskInstances ti 
+      where pooledActor.actorId like :actorIds  
+         and ti.actorId is null  
+         and ti.end is null  
+         and ti.isCancelled = false
+    ]]>
+  </query>
+</hibernate-mapping>

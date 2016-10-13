@@ -1,0 +1,28 @@
+<decorators defaultdir="/decorators">
+	<decorator name="list" page="list.jsp">
+		<pattern>*/demobasic/list.do*</pattern>
+	</decorator>
+    
+	<decorator name="manage" page="manage.jsp">
+		<pattern>*/show*.do*</pattern>
+		<pattern>*/edit*.do*</pattern>
+		<pattern>*/add*.do*</pattern>
+		<pattern>*/request/*/upAttach*.do*</pattern>
+	</decorator>
+    
+	<decorator name="listajax" page="listajax.jsp">     
+		<pattern>*/list*.do*</pattern>         
+		<pattern>*/index*.do*</pattern>
+		<pattern>*/drafts*.do*</pattern>
+		<pattern>*/inbox.do*</pattern>		<!-- fax incoming -->
+		<pattern>*/mysend.do</pattern>		<!-- fax outgoing -->
+		<pattern>*/faxjob/jobs.do*</pattern><!-- fax monitoring -->
+		<pattern>*/request/visit/add.do</pattern>		<!-- visit request add -->
+		<pattern>*/request/rnm/rnm*.do</pattern>		<!-- rnm request add -->
+		<pattern>*/request/myowned.do</pattern>
+		<pattern>*/request/involved.do</pattern>
+		<pattern>*/request/mydone.do</pattern>
+		<pattern>*/request/*/add*.do*</pattern>	<!-- visit request add -->
+		<pattern>*/request/*/template*.do*</pattern>	<!-- visit request add -->
+	</decorator>
+</decorators>

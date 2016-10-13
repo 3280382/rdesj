@@ -1,0 +1,12 @@
+html{ height:100%}
+body{background:url(../images/bot_bg.gif) no-repeat left bottom; height:100%;}
+#header{HEIGHT: 96px; background:url(../images/top_bg.jpg) no-repeat left;}
+#header .logo{float:left; margin-top:8px; width:465px; height:70px; }
+#header .top_r{float:right; margin-right:15px; margin-top:5px; color:#666; line-height:140%; font-size:11px}
+#header .top_r p{padding-left:5px;}
+#header .top_r ul{background:url(../images/logos.gif) no-repeat; height:30px; width:250px; padding-top:6px;padding-left:18px}
+#header .top_r ul li{ float:left; width:32px;}
+
+.main_table{WIDTH: 100%; background :url(../images/bg.gif) repeat-y left;}
+#footer{background:url(../images/bot_bg.jpg) no-repeat left top; padding-top:10px;height:10px;width:100%}
+

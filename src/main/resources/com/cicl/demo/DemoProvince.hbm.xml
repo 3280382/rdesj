@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+	<class table="DEMOPROVINCE" name="com.cicl.frame.demo.entity.DemoProvince" dynamic-insert="true" dynamic-update="true" select-before-update="true">
+		<id column="DEMOPROVINCE_ID" name="id" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">SEQ_DEMOPROVINCE_ID</param>
+			</generator>
+		</id>
+		<property column="DEMOCOUNTRY_ID" name="countryId" type="java.lang.Long" />
+		<many-to-one name="country" unique="true" insert="false" update="false" class="com.cicl.frame.demo.entity.DemoCountry" column="DEMOCOUNTRY_ID"
+			outer-join="true" cascade="none" />
+
+		<property name="name" type="java.lang.String" />
+		<property name="createdDate" type="java.util.Date" />
+		<property name="modifiedDate" type="java.util.Date" />
+	</class>
+</hibernate-mapping>

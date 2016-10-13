@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%d{dd-MM-yy HH:mm:ss}] %p - %C.%M(%L) | %m%n"/>
+        </layout>
+    </appender>
+     <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="d:/log/cicl.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%d{dd-MM-yy HH:mm:ss}] %p - %C.%M(%L) | %m%n"/>
+            <!--[%-5p] [%d] [%t] method:%c%n%m%n-->
+        </layout>
+    </appender>
+
+    <logger name="org.apache">
+        <level value="warn"/>
+    </logger>
+
+    <logger name="com.cicl.frame">
+        <level value="warn"/>
+    </logger>
+
+    <logger name="org.hibernate">
+        <level value="warn"/>
+    </logger>
+    
+    <logger name="org.hibernate.SQL">
+        <level value="warn"/>
+    </logger>   
+        <logger name=" org.springframework.web.servlet">
+        <level value="warn"/>
+    </logger> 
+    
+	<!-- Log category to use when no mapped handler is found for a request. -->
+	<logger name="org.springframework.web.servlet.PageNotFound">
+		<level value="warn"/>
+	</logger>
+	
+    <logger name="org.springframework">
+        <level value="warn"/>
+    </logger>
+    
+    <logger name="org.springframework.orm">
+        <level value="warn"/>
+    </logger>
+    
+    <logger name="org.springframework.transaction">
+        <level value="warn"/>
+    </logger>
+    
+     <logger name="org.springframework.aop">
+        <level value="warn"/>
+    </logger>
+    
+    <logger name="org.springframework.beans.factory.support">
+        <level value="warn"/>
+    </logger>
+    
+    
+    
+    <!-- uncaught exception loggin in tow case: jstl view render and json view render -->
+    <logger name="com.cicl.frame.core.web.controller.AbstractAnnotationController">
+        <level value="warn"/>
+    </logger>
+    <logger name="com.cicl.frame.core.web.view.json.serializer.ThrowableSerializer">
+        <level value="warn"/>
+    </logger>
+    <!-- end uncaught exception loggin -->
+    
+    <root>
+        <level value="warn"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="CONSOLE"/>        
+    </root>
+
+</log4j:configuration>

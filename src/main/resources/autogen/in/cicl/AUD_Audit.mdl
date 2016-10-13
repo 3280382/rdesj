@@ -1,0 +1,105 @@
+{
+/**
+ * java代码的目录层次（其中parentPackage在global.mdl定义）
+ * ${parentPackage}.${package}.${subpackage}.entity.${className}
+ * 则该模块的类名全路径是：
+ * com.cicl.frame.audit.auditlog.entity.AuditLog
+ */
+package:"audit",
+subpackage:"auditlog",
+className:"AuditLog",
+objectName:"auditLog",
+tableName:"AUDIT_LOG",
+titleName:{zh_CN:"审计信息查询",en:"Audit log view"},
+
+/**
+ * 主键的java类型
+ */
+pk:{type:"Long"},
+
+/**
+ * 权限模块的初始化数据，如会生成如下的初始化sql脚本和配置文件。
+ * 需要保证parentId和parentCode在整个工程不冲突
+ * insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(100020101,1000201,'查看','ROLE_AUD_LOG_QUERY');
+ * insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(100020102,1000201,'新增','ROLE_AUD_LOG_ADD');
+ * insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(100020103,1000201,'修改','ROLE_AUD_LOG_EDIT');
+ * insert into AUTHORITY(AUTHORITY_ID,PARENT_ID,NAME,CODE) values(100020104,1000201,'删除','ROLE_AUD_LOG_REMOVE');
+ * 
+ * for applicationContext-security.xml
+ * <sec:intercept-url access="ROLE_AUD_LOG_QUERY" pattern="/audit/auditlog/list**" />
+ * <sec:intercept-url access="ROLE_AUD_LOG_QUERY" pattern="/audit/auditlog/show**" />
+ * <sec:intercept-url access="ROLE_AUD_LOG_QUERY" pattern="/audit/auditlog/load**" />
+ * <sec:intercept-url access="ROLE_AUD_LOG_QUERY" pattern="/audit/auditlog/search**" />
+ * <sec:intercept-url access="ROLE_AUD_LOG_ADD" pattern="/audit/auditlog/add**" />
+ * <sec:intercept-url access="ROLE_AUD_LOG_ADD" pattern="/audit/auditlog/save**" />
+ * <sec:intercept-url access="ROLE_AUD_LOG_EDIT" pattern="/audit/auditlog/edit**" />
+ * <sec:intercept-url access="ROLE_AUD_LOG_EDIT" pattern="/audit/auditlog/update**" />
+ * <sec:intercept-url access="ROLE_AUD_LOG_REMOVE" pattern="/audit/auditlog/remove**" />
+ */
+authority:{parentId:"1000201",parentCode:"AUD_LOG"},
+
+display:{
+	type:"LIST",//LIST|TREE|MASTER_DETAIL
+	grid:{},	
+	form:{cols:2,colWidth:[90,200,90,200]},
+	dialog:{width:650,height:360}
+},
+
+/**
+ * column:数据库的列名
+ * name:java entity对象的field名
+ * type:分别为生成java对象、hibernate配置文件、数据库sql脚本的类型（TODO：使用hibernate的类型mapping，简化定义）
+ * annotation：在java entity对象设置的annotation
+ * display：某一列的国际化信息，会生成相关的国际化文件
+ */
+col:[
+	{column:"USER_ID",name:"userId",
+		type:{java:"Long",hibernate:"java.lang.Long",db:"bigint"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作者",en:"user id"}},
+	{column:"USERNAME",name:"username",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"姓名",en:"name"}},
+	{column:"LOGIN_NAME",name:"loginName",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"登录账号",en:"loginName"}},
+	{column:"USER_IP",name:"userIp",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作者IP",en:"user ip"}},
+	{column:"TARGET_ID",name:"targetId",
+		type:{java:"Long",hibernate:"java.lang.Long",db:"bigint"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作对象编码",en:"target id"}},
+	{column:"TARGET_ENTITY_TYPE",name:"targetEntityType",
+		type:{java:"String",hibernate:"java.lang.String",db:"bigint"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作对象类型",en:"target entity type"}},
+	{column:"TARGET_NAME",name:"targetName",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作对象名称",en:"target name"}},
+	{column:"TARGET_DESC",name:"targetDesc",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(1000)"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作对象描述",en:"target description"}},
+	{column:"TARGET_SNAPSHOT",name:"targetSnapshot",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(4000)"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作对象快照",en:"target snapshot"}},
+	{column:"OP_TYPE",name:"opType",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作类型",en:"operation type"}},
+	{column:"OP_TIME",name:"opTime",
+		type:{java:"Date",hibernate:"java.util.Date",db:"date"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作时间",en:"operation time"}},
+	{column:"OP_DESC",name:"opDesc",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(1000)"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"操作描述",en:"operation description"}}
+	]
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+	<class table="DEMODATA" name="com.cicl.frame.demo.entity.DemoData" select-before-update="true" dynamic-insert="true" dynamic-update="true">
+		<id column="DEMODATA_ID" name="id" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">SEQ_DEMODATA_ID</param>
+			</generator>
+		</id>
+		<property name="name" type="java.lang.String" />
+		<property name="birthday" type="java.util.Date" />
+		<property name="sex" type="java.lang.String" />
+		<property name="salary" type="java.math.BigDecimal" />
+		<property name="createdDate" type="java.util.Date" />
+		<property name="modifiedDate" type="java.util.Date" />
+		<property name="email" type="java.lang.String" />
+
+		<property column="DEMOCOUNTRY_ID" name="countryId" type="java.lang.Long" />
+		<many-to-one column="DEMOCOUNTRY_ID" name="country" class="com.cicl.frame.demo.entity.DemoCountry" unique="true" insert="false"
+			update="false" outer-join="true" cascade="none" />
+
+		<property column="DEMOPROVINCE_ID" name="provinceId" type="java.lang.Long" />
+		<many-to-one name="province" column="DEMOPROVINCE_ID" class="com.cicl.frame.demo.entity.DemoProvince" unique="true" insert="false"
+			update="false" outer-join="true" cascade="none" />
+	</class>
+</hibernate-mapping>

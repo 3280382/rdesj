@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+	<class table="${tableName}" name="${parentPackage}.${package}.${subpackage}.entity.${className}" select-before-update="true" dynamic-insert="true" dynamic-update="true">
+		<id name="id" type="java.lang.${pk.type}">
+			<generator class="sequence">
+				<param name="sequence">SEQ_${tableName}_ID</param>
+			</generator>
+		</id>
+		<#list col as r>
+		<property name="${r.name}" type="${r.type.hibernate}" />
+		</#list>
+		
+		<#if display.type=="TREE"><many-to-one column="PARENT_ID" name="parent" class="${parentPackage}.${package}.${subpackage}.entity.${className}" unique="true" insert="false" update="false"
+			not-null="false" not-found="ignore" outer-join="true" cascade="none" />
+		<set name="children" inverse="true" cascade="delete" lazy="true">
+			<key column="PARENT_ID" />
+			<one-to-many class="${parentPackage}.${package}.${subpackage}.entity.${className}" />
+		</set></#if>
+		
+		<property name="createdDate" type="java.util.Date" />
+		<property name="modifiedDate" type="java.util.Date" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="propertyPlaceHolderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:test-elites.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="true" />
+	</bean>
+	
+	<!-- 以静态变量保存ApplicationContext -->
+	<bean class="com.cicl.frame.core.util.spring.SpringContextHolder" lazy-init="false" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>message.vt.jsp.global</value>
+				<value>message.vt.jsp.paginatorTag</value>
+				<value>message.vt.jsp.demo.DemoData</value>				
+				<value>message.vt.jsp.demo.DemoDept</value>
+				<value>message.vt.jsp.demo.DemoCountry</value>
+				<value>message.vt.jsp.demo.DemoProvince</value>
+				<value>message.vt.jsp.security.SysUser</value>
+				<value>message.vt.jsp.security.Organization</value>
+				<value>message.vt.jsp.security.Role</value>
+				<value>message.vt.jsp.security.Authority</value>
+				<value>message.vt.jsp.audit.AuditLog</value>
+				<value>message.vt.jsp.system.Dictionary</value>
+				<value>message.vt.jsp.system.Upload</value>
+				<value>message.vt.jsp.pics.Officer</value>
+				<value>message.vt.jsp.pics.Rank</value>
+				<value>message.vt.jsp.pics.Post</value>
+				<value>message.vt.jsp.pics.Location</value>
+				<value>message.vt.jsp.pics.Postinghistory</value>
+				<value>message.vt.jsp.pics.Posting</value>
+				<value>message.vt.jsp.pics.Group</value>
+			</list>
+		</property>
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+
+</beans>

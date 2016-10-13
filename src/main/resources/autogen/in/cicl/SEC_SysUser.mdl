@@ -1,0 +1,106 @@
+{
+package:"security",
+subpackage:"sysuser",
+className:"SysUser",
+objectName:"sysUser",
+tableName:"SYS_USER",
+titleName:{zh_CN:"用户管理",en:"User manage"},
+
+pk:{type:"Long"},
+
+authority:{parentId:"1000101",parentCode:"SEC_USER"},
+
+display:{
+	type:"LIST",//LIST|TREE|MASTER_DETAIL
+	grid:{},	
+	form:{cols:2,colWidth:[90,200,90,200]},
+	dialog:{width:650,height:360}
+},
+col:[
+	{column:"USERNAME",name:"username",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200) not null"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:""},
+		display:{zh_CN:"姓名",en:"name"}},
+	{column:"LOGIN_NAME",name:"loginName",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200) not null"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:""},
+		display:{zh_CN:"登录账号",en:"loginName"}},
+	{column:"PASSWORD",name:"password",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:"@JsonIgnore"},
+		display:{zh_CN:"密码",en:"password"}},
+	{column:"EMAIL",name:"email",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"@NotEmpty @Length(max = 200) @Email",getter:""},
+		display:{zh_CN:"邮箱",en:"email"}},
+	{column:"STATUS",name:"status",
+		type:{java:"Long",hibernate:"java.lang.Long",db:"bigint"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"状态",en:"status"}},
+	{column:"ACCOUNT_NON_EXPIRED",name:"accountNonExpired",
+		type:{java:"boolean",hibernate:"boolean",db:"boolean"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"是否失效",en:"accountNonExpired"}},
+	{column:"CREDENTIALS_NON_EXPIRED",name:"credentialsNonExpired",
+		type:{java:"boolean",hibernate:"boolean",db:"boolean"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"是否失效",en:"credentialsNonExpired"}},
+	{column:"ENABLED",name:"enabled",
+		type:{java:"boolean",hibernate:"boolean",db:"boolean"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"是否生效",en:"enabled"}},
+	{column:"ACCOUNT_NON_LOCKED",name:"accountNonLocked",
+		type:{java:"boolean",hibernate:"boolean",db:"boolean"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"是否锁定",en:"accountNonLocked"}},
+			
+	{column:"ORGANIZATION_ID",name:"organizationId",
+		type:{java:"Long",hibernate:"java.lang.Long",db:"bigint"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"部门",en:"organizationId"}},
+	{column:"CODE",name:"code",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200) not null"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:""},
+		display:{zh_CN:"用户编码",en:"code"}},
+	{column:"MOBILE",name:"mobile",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200) not null"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:""},
+		display:{zh_CN:"手机",en:"mobile"}},
+	{column:"PHONE",name:"phone",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:""},
+		display:{zh_CN:"电话",en:"phone"}},
+	{column:"ADDRESS",name:"address",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:""},
+		display:{zh_CN:"地址",en:"address"}},
+	{column:"DESCRIPTION",name:"description",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(2000)"},
+		annotation:{field:"@NotEmpty @Length(max = 2000)",getter:""},
+		display:{zh_CN:"描述",en:"description"}},
+	{column:"RECENT_PASSWORD",name:"recentPassword",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(2000)"},
+		annotation:{field:"@NotEmpty @Length(max = 2000)",getter:"@JsonIgnore"},
+		display:{zh_CN:"最近密码",en:"recentPassword"}},
+	{column:"IS_LOGIN",name:"isLogin",
+		type:{java:"boolean",hibernate:"boolean",db:"boolean"},
+		annotation:{field:"",getter:"@JsonIgnore"},
+		display:{zh_CN:"是否登录",en:"isLogin"}},
+	{column:"TRY_TIMES",name:"tryTimes",
+		type:{java:"Long",hibernate:"java.lang.Long",db:"bigint"},
+		annotation:{field:"",getter:"@JsonIgnore"},
+		display:{zh_CN:"尝试次数",en:"tryTimes"}},
+	{column:"FAIL_LOGIN_TIMES",name:"failLoginTimes",
+		type:{java:"Long",hibernate:"java.lang.Long",db:"bigint"},
+		annotation:{field:"",getter:"@JsonIgnore"},
+		display:{zh_CN:"失败登录次数",en:"failLoginTimes"}}
+	]
+}
+/*
+TODO约定：
+1)className、objectName、tableName、fileName
+2)column、name、display.en
+3)type:java/hibernate/db
+4)db length, annotation valid length,field length  
+5)form,dialog:width height
+*/

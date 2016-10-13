@@ -1,0 +1,52 @@
+{
+package:"security",
+subpackage:"organization",
+className:"Organization",
+objectName:"organization",
+tableName:"ORGANIZATION",
+titleName:{zh_CN:"部门管理",en:"Organization manage"},
+
+pk:{type:"Long"},
+
+authority:{parentId:"1000102",parentCode:"SEC_ORG"},
+
+display:{
+	type:"TREE",//LIST|TREE|MASTER_DETAIL
+	treeConfig:{
+	parentId:"parentId"
+	},	
+	grid:{},	
+	form:{cols:2,colWidth:[90,200,90,200]},
+	dialog:{width:650,height:360}
+},
+col:[		
+	{column:"PARENT_ID",name:"parentId",
+		type:{java:"Long",hibernate:"java.lang.Long",db:"bigint"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"上级部门",en:"parentId"}},
+	{column:"NAME",name:"name",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200) not null"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:""},
+		display:{zh_CN:"名称",en:"name"}},
+	{column:"CODE",name:"code",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200) not null"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:""},
+		display:{zh_CN:"部门编码",en:"code"}},
+	{column:"SORT_ORDER",name:"sortOrder",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(200)"},
+		annotation:{field:"@NotEmpty @Length(max = 200)",getter:""},
+		display:{zh_CN:"排序编码",en:"sortOrder"}},
+	{column:"STATUS",name:"status",
+		type:{java:"Long",hibernate:"java.lang.Long",db:"bigint"},
+		annotation:{field:"",getter:""},
+		display:{zh_CN:"状态",en:"status"}},
+	{column:"DATATYPE",name:"datatype",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(2000)"},
+		annotation:{field:"@NotEmpty @Length(max = 2000)",getter:""},
+		display:{zh_CN:"类型",en:"datatype"}},
+	{column:"DESCRIPTION",name:"description",
+		type:{java:"String",hibernate:"java.lang.String",db:"varchar(2000)"},
+		annotation:{field:"@NotEmpty @Length(max = 2000)",getter:""},
+		display:{zh_CN:"描述",en:"description"}}
+	]
+}

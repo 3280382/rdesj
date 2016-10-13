@@ -1,0 +1,10 @@
+<!--${package}.${className} -->
+<sec:intercept-url access="ROLE_${authority.parentCode}_QUERY" pattern="/${package}/${className?lower_case}/list**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_QUERY" pattern="/${package}/${className?lower_case}/show**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_QUERY" pattern="/${package}/${className?lower_case}/load**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_QUERY" pattern="/${package}/${className?lower_case}/search**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_ADD" pattern="/${package}/${className?lower_case}/add**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_ADD" pattern="/${package}/${className?lower_case}/save**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_EDIT" pattern="/${package}/${className?lower_case}/edit**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_EDIT" pattern="/${package}/${className?lower_case}/update**" />
+<sec:intercept-url access="ROLE_${authority.parentCode}_REMOVE" pattern="/${package}/${className?lower_case}/remove**" />

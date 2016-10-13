@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+	<class table="DEMODEPT" name="com.cicl.frame.demo.entity.DemoDept" dynamic-insert="true" dynamic-update="true" select-before-update="true">
+		<id column="DEMODEPT_ID" name="id" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">SEQ_DEMODEPT_ID</param>
+			</generator>
+		</id>
+		<property column="PARENT_ID" name="parentId" type="java.lang.Long" />
+		<many-to-one column="PARENT_ID" name="parent" class="com.cicl.frame.demo.entity.DemoDept" unique="true" insert="false" update="false"
+			not-null="false" not-found="ignore" outer-join="true" cascade="none" />
+		<set name="children" inverse="true" cascade="delete" lazy="true">
+			<key column="PARENT_ID" />
+			<one-to-many class="com.cicl.frame.demo.entity.DemoDept" />
+		</set>
+
+		<property name="name" type="java.lang.String" />
+		<property name="code" type="java.lang.String" />
+		<property name="sortOrder" type="java.lang.String" />
+		<property name="deptType" type="java.lang.String" />
+		<property name="createdDate" type="java.util.Date" />
+		<property name="modifiedDate" type="java.util.Date" />
+	</class>
+</hibernate-mapping>

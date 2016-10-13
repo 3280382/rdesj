@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+	<class table="SYS_DICTIONARY" name="com.cicl.frame.system.dictionary.entity.Dictionary" select-before-update="true" dynamic-insert="true" dynamic-update="true">
+		<id name="id" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">SEQ_SYS_DICTIONARY_ID</param>
+			</generator>
+		</id>
+		<property column="PARENT_ID" name="parentId" type="java.lang.Long" />
+		<property name="nodesType" type="java.lang.String" />
+		<property name="parentKey" type="java.lang.String" />
+		<property name="key" type="java.lang.String" />
+		<property name="alias" type="java.lang.String" />
+		<property name="value" type="java.lang.String" />
+		<property name="valuetype" type="java.lang.String" />
+		<property name="validation" type="java.lang.String" />
+		<property name="value1" type="java.lang.String" />
+		<property name="valuetype1" type="java.lang.String" />
+		<property name="validation1" type="java.lang.String" />
+		<property name="sortOrder" type="java.lang.String" />
+		<property name="enable" type="java.lang.Long" />
+		<property name="visualable" type="java.lang.Long" />
+		<property name="displayType" type="java.lang.String" />
+		<property name="editable" type="java.lang.Long" />
+		<property name="description" type="java.lang.String" />
+		
+		<many-to-one column="PARENT_ID" name="parent" class="com.cicl.frame.system.dictionary.entity.Dictionary" unique="true" insert="false" update="false"
+			not-null="false" not-found="ignore" outer-join="true" cascade="none" />
+		<set name="children" inverse="true" cascade="delete" lazy="true">
+			<key column="PARENT_ID" />
+			<one-to-many class="com.cicl.frame.system.dictionary.entity.Dictionary" />
+		</set>
+		
+		<property name="createdDate" type="java.util.Date" />
+		<property name="modifiedDate" type="java.util.Date" />
+	</class>
+</hibernate-mapping>

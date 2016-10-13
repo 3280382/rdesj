@@ -1,0 +1,92 @@
+body{overflow-y:auto;}
+body,table, input{ font-family:Arial, Helvetica, sans-serif; font-size:13px; }
+body,html{ text-align:center; margin:0px; padding:0px;}
+
+table,div{ text-align:left}
+
+.right{ float:right;}
+.left{ float:left}
+.f_red{ color:red}
+.grey{ color:#999999}
+.input {border:1px solid #BFCCDC; width: 90%; height: 1.8em;line-height:1.8em;}
+
+.disable1{background:#EBEBE3}
+
+/* form header*/ 
+.form_header{ width:100%; height: 30px; background:url(../images/form_header_mid.gif); clear:both; }
+.form_header span.a1{ height:30px; float:left;background:url(../images/form_header_a1.gif) no-repeat left; width:5px; display:block;}
+.form_header span.t1{font-size:16px; float:left; font-weight:bold; color:#fff; line-height:30px; margin-left:4px;  }
+.form_header .right{ float:right;  }
+.form_header .right a{ float:left; margin-right:5px; margin-top:2px}
+.form_header span.a2{ height:27px; float:left;background:url(../images/form_header_a2.gif) no-repeat right; width:5px;display:block}
+
+
+/* summary */ 
+.summary{ width:100%;height:28px;background:url(../images/summary_bg.gif); line-height:28px}
+.summary .summary_title{ color:#5589AE; font-size:18px; float:left; margin-left:8px;}
+.summary .right span{ float:left; margin-right:15px;}
+/* table */ 
+.form_tb1{ border-collapse:collapse; border:1px solid #B6C4CD; width:100%; margin-top:5px;}
+.form_tb1 td{border:1px solid #B6C4CD; padding:3px 5px; text-align:left; line-height:25px; vertical-align:top; background:#fff}
+ .form_tb1 td.t_h{background:#F4F8F9; font-weight:bold; text-align:left}
+.len_1{ width:200px; display:block; float:left; line-height:22px; }
+
+.form_div{ border:1px solid #B6C5CC; background:#F4F8F9; margin-top:5px;   text-align:center; clear:both}
+.form_div table{  margin:0 auto; margin-top:4px;margin-bottom:4px; margin-left:2%; text-align:left; width:96%;}
+.form_div table td.t_h{ font-weight:bold; padding-right:8px; text-align:right;}
+
+.title1{background:#fff url(../images/title_2.gif) bottom; height:28px; line-height:28px; color:#5589AE; font-size:14px; clear:both; text-align:left; font-weight:bold; border:1px solid #EBECE7; margin-top:5px;clear:both }
+.title1 a{ font-weight:normal}
+.title1 span.title1_1{ width:20px; float:left;background:url(../images/title_1.gif) no-repeat; height:25px; margin-right:8px; margin-left:4px;}
+.title1 span.title1_2{ float:left;  }
+.title1 div.right{ float:right; margin-top:3px;}
+
+.attachment{border:1px solid #B6C5CC;  margin-top:5px; text-align:center;clear:both; background:#fff}
+.attachment table{   margin-top:4px;margin-bottom:4px; margin-left:8px; text-align:left; width:96%; margin-left:4px;}
+.attachment table td { border-bottom:1px dotted #ccc; line-height:22px;}
+
+
+.buttons{ width:100%; margin-top:5px; border-top:1px solid #BAD6EE; border-bottom:1px solid #BAD6EE; background:#E1EFFC; text-align:center; clear:both; overflow:hidden; height:40px;}
+.buttons div{ width:320px; margin:0 auto; margin-top:8px; margin-bottom:8px;}
+.buttons div a{ float:left; margin-right:5px; }
+
+
+a.btn1{background:url(../images/btn1.gif) no-repeat right; height:24px;color:#000; line-height:24px;padding-right:10px; display:block; font-size:12px; cursor: pointer; text-decoration:none;}
+a.btn1 span{ width:4px; height:24px; float:left;background:url(../images/btn1_1.gif) no-repeat; margin-right:6px}
+a.btn1:hover{background:url(../images/btn1a.gif) no-repeat right; height:24px;color:#000; line-height:24px;padding-right:10px; font-size:12px; cursor: pointer}
+a.btn1:hover span{ width:4px; height:24px; float:left;background:url(../images/btn1a_1.gif) no-repeat; margin-right:6px}
+
+a.btn2{background:url(../images/btn1.gif) no-repeat right; height:24px;color:#000; line-height:24px;padding-right:10px; display:block; font-size:12px; cursor: pointer; text-decoration:none; margin-right:3px;}
+a.btn2 span{ width:4px; height:24px; float:left;background:url(../images/btn1_1.gif) no-repeat; margin-right:6px}
+a.btn2:hover{background:url(../images/btn1a.gif) no-repeat right; height:24px;color:#000; line-height:24px;padding-right:10px; font-size:12px; cursor: pointer}
+a.btn2:hover span{ width:4px; height:24px; float:left;background:url(../images/btn1a_1.gif) no-repeat; margin-right:6px}
+
+
+
+
+a.btn3{background:url(../images/btn2.gif) no-repeat right; height:19px;color:#2F6F9F; line-height:19px;padding-right:10px; display:block; font-size:12px; cursor: pointer; margin-right:5px; font-weight:normal;text-decoration:none;}
+a.btn3 span{ width:4px; height:19px; float:left;background:url(../images/btn2_1.gif) no-repeat; margin-right:6px}
+a.btn3:hover{background:url(../images/btn2a.gif) no-repeat right; height:19px;color:#2F6F9F; line-height:19px;padding-right:10px; display:block; font-size:12px; cursor: pointer; margin-right:5px; font-weight:normal}
+a.btn3:hover span{ width:4px; height:19px; float:left;background:url(../images/btn2a_1.gif) no-repeat; margin-right:6px}
+
+
+/* table */ 
+.table1{ border-collapse:collapse; border:1px solid #B6C4CD; width:100%; margin-top:0px;}
+.table1 td{border:1px solid #B6C4CD; padding:3px 5px; text-align:left; line-height:25px; vertical-align:top}
+.table1 th{background:url(../images/th.gif) repeat-x; font-weight:bold; color:#2F596F; text-align:center;border:1px solid #B6C4CD;}
+ 
+/** tool bar **/
+.toolBar1 {padding-left:5px;padding-top:3px;height:28px;width:98%;vertical-align: middle;font-size: 12px; background:none;}
+.btnBg, .btnBg_hover {display: block;float: left;height: 25px;line-height: 25px;font-size: 12px;color: #000;margin-left: 5px;margin-right: 5px;}
+.btnBg_gray {color: #777;}
+.btnL {display: inline-block;height: 25px;width: 4px;}
+.btnBg span, .btnBg_gray span, .btnBg_hover span {display: inline-block;height: 25px;margin: 0 15px 0 11px;text-align: center;vertical-align: top;}
+
+ /* public_btn_img*/
+.btnBg{background:url(../images/ui_btn_bg.png) no-repeat right top;}
+.btnBg_gray{background:url(../images/ui_btn_bg_gray.png) no-repeat right top;}
+.btnBg_hover{background:url(../images/ui_btn_bg_hover.png) no-repeat right top;}
+.btnL{background:url(../images/ui_btn_allbgs.png) no-repeat left top;}
+.btnL{ background-position: -15px -151px;}
+.btnBg_gray .btnL{ background-position: -20px -151px;}
+.btnBg_hover .btnL{ background-position: -25px -151px;}

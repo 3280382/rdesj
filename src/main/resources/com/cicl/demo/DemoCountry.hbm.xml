@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+	<class table="DEMOCOUNTRY" name="com.cicl.frame.demo.entity.DemoCountry" dynamic-insert="true" dynamic-update="true" select-before-update="true">
+		<id column="DEMOCOUNTRY_ID" name="id" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">SEQ_DEMOCOUNTRY_ID</param>
+			</generator>
+		</id>		
+		<set name="provinces" inverse="true" cascade="delete" lazy="true">
+			<key column="DEMOCOUNTRY_ID" />
+			<one-to-many class="com.cicl.frame.demo.entity.DemoProvince" />
+		</set>
+		
+		<property name="name" type="java.lang.String" />
+		<property name="createdDate" type="java.util.Date" />
+		<property name="modifiedDate" type="java.util.Date" />
+	</class>
+</hibernate-mapping>

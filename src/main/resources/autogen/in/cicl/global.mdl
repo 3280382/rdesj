@@ -1,0 +1,33 @@
+{
+//java代码的父级目录
+parentPackage:"com.cicl.frame",
+//java代码注释部分的作者（TODO：使用freemarker include的方式实现）
+author:"cicl",
+//java代码注释部分的版本
+revision:"1.0.0",
+
+//需要处理的DataModel文件名，如果为空则处理所有后缀为mdl的DataModel文件
+dataModelFileName:"DEMO_Codegen.mdl",
+
+/**发布目录，发布目录一般为新建工程的pom.xml文件所在的父目录
+* 如果为空则不进行发布；
+* 如果为目录路径则发布到指定的目录；
+* 如果为"CURRENT_PROJECT"，则发布到当前的工程目录。 
+*/
+targetPath:"D:/myproject",
+
+/**进行代码发布时，文件的覆盖方式，TRUE|FALSE|TIP
+* 如果文件存在，按照参数的定义进行如下操作
+* TRUE:		不提示用户选择，直接覆盖；
+* FALSE:	不提示用户选择，直接跳过不覆盖；
+* TIP:		提示用户选择是否覆盖；
+*/
+overridden:"TIP",
+/**进行代码发布时，文件的新增方式，TRUE|FALSE|TIP
+* 如果文件不存在，按照参数的定义进行如下操作
+* TRUE:		不提示用户选择，直接新增；
+* FALSE:	不提示用户选择，直接跳过不新增；
+* TIP:		提示用户是否选择新增；
+*/
+add:"TRUE"
+}

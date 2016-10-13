@@ -1,0 +1,17 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.ctit.cicl.com/tags" prefix="cicl" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<%@page import="com.cicl.frame.system.dictionary.service.DictionaryHolder"%>
+<%@page import="com.cicl.frame.core.util.date.DateConstant"%>
+
+<sec:authentication property="principal" var="authentication"/>
+<c:set var="ctx" value="${pageContext.request.contextPath}" scope="request" />
+<c:set var="dateTimeFormat" value="<%=DateConstant.DATE_TIME_FORMAT%>"/>
+<c:set var="dateFormat" value="<%=DateConstant.DATE_FORMAT%>"/>
+<c:set var="jsDateTimeFormat" value="<%=DateConstant.JS_DATE_TIME_FORMAT%>"/>
+<c:set var="jsDateFormat" value="<%=DateConstant.JS_DATE_FORMAT%>"/>

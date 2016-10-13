@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+	
+	<import resource="applicationContext-resource.xml" />
+	
+	<!-- use @ExceptionHandler annatation at controller
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="error" />
+	</bean>
+	-->
+	
+	<!--Saves temporary uploaded files to the servlet container's temporary directory.-->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5000000" />
+		<!--bytes-->
+	</bean>
+	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="zh_CN" />
+		<property name="cookieName" value="CFFLocale" />
+		<property name="cookiePath" value="/" />
+		<property name="cookieMaxAge" value="999999" />
+	</bean>
+	
+	<bean id="themeResolver" class="org.springframework.web.servlet.theme.CookieThemeResolver">
+		<property name="defaultThemeName" value="redmond" />
+		<property name="cookieName" value="CFFTheme" />
+		<property name="cookiePath" value="/" />
+		<property name="cookieMaxAge" value="999999" />
+	</bean>
+	
+	<!-- Configures the @Controller programming model -->
+	<!--<mvc:annotation-driven />-->
+	<bean id="customObjectMapper" class="com.cicl.frame.core.web.view.json.serializer.CustomObjectMapper" />
+	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="objectMapper" ref="customObjectMapper" />
+	</bean>
+	<!-- FIELD TYPE CONVERSION AND VALIDATION -->
+	<!-- Enables the Spring 3 Type Conversion system that uses Joda Time Formatting for Date/Time types 
+		<bean id="conversionService" class="org.springframework.samples.petclinic.util.PetclinicConversionServiceFactory" />-->
+		<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean" />
+
+	<!-- Configures JSR-303 Declarative Validation with default provider on classpath (Hibernate Validator) -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	<!-- REGISTERED HANDLER TYPES -->
+
+	<!-- Enables annotated @Controllers; responsible for invoking an annotated POJO @Controller when one is mapped. -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<util:list>
+				<ref local="mappingJacksonHttpMessageConverter" />
+			</util:list>
+		</property>
+		<property name="webBindingInitializer">
+			<bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+				<!----><property name="conversionService" ref="conversionService" />
+				<property name="validator" ref="validator" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Maps requests to @Controllers based on @RequestMapping("path") annotation values
+		If no annotation-based path mapping is found, Spring MVC sends a 404 response and logs a pageNotFound warning. -->
+	<!-- Map URL to Controller's method		-->		
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="order" value="1" />
+	</bean>
+		
+	<!-- Maps URL to Controller's name-->
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor" />
+				<ref bean="themeChangeInterceptor" />
+			</list>
+		</property>
+	</bean>  	
+
+	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+	<bean id="themeChangeInterceptor" class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>	
+
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="ignoreAcceptHeader" value="true"/>
+		<property name="defaultContentType" value="text/html"/>
+		<property name="mediaTypes">
+			<map>			
+				<!--Map URL *.do to render JstlView-->	
+				<entry key="do" value="text/html" />
+				<!--Map URL *.json to render json data-->
+				<entry key="json" value="application/json" />
+			</map>
+		</property>		
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+					<property name="prefix" value="/WEB-INF/vt/jsp/" />
+					<property name="suffix" value=".jsp" />
+					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>		
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+					<property name="objectMapper" ref="customObjectMapper"/>
+				</bean>          
+			</list>
+		</property>
+	</bean>	
+	
+	<!-- Scans the classpath of this application for @Controller to deploy as beans -->
+	<context:component-scan base-package="com.cicl" use-default-filters="false" >
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan> 
+</beans>

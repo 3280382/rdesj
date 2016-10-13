@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+	<class table="SYS_USER" name="com.cicl.frame.security.sysuser.entity.SysUser" select-before-update="true" dynamic-insert="true"
+		dynamic-update="true">
+		<id column="SYS_USER_ID" name="id" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">SEQ_SYS_USER_ID</param>
+			</generator>
+		</id>
+		<property name="username" type="java.lang.String" />
+		<property name="loginName" type="java.lang.String" />
+		<property name="password" type="java.lang.String" />
+		<property name="email" type="java.lang.String" />
+		<property name="status" type="java.lang.Long" />
+		<property name="accountNonExpired" type="boolean" />
+		<property name="credentialsNonExpired" type="boolean" />
+		<property name="enabled" type="boolean" />
+		<property name="accountNonLocked" type="boolean" />
+		<property column="ORGANIZATION_ID" name="organizationId" type="java.lang.Long" />
+		<property name="code" type="java.lang.String" />
+		<property name="mobile" type="java.lang.String" />
+		<property name="phone" type="java.lang.String" />
+		<property name="address" type="java.lang.String" />
+		<property name="description" type="java.lang.String" />
+		<property name="recentPassword" type="java.lang.String" />
+		<property name="isLogin" type="boolean" />
+		<property name="tryTimes" type="java.lang.Long" />
+		<property name="failLoginTimes" type="java.lang.Long" />
+
+		<many-to-one column="ORGANIZATION_ID" name="organization" class="com.cicl.frame.security.organization.entity.Organization"
+		 unique="true" insert="false" update="false" not-null="false" not-found="ignore" outer-join="true" cascade="none" />
+		<set name="roles" table="SYS_USER_ROLE" inverse="false" cascade="none" lazy="true">
+			<key column="SYS_USER_ID" />
+			<many-to-many column="ROLE_ID" class="com.cicl.frame.security.role.entity.Role" not-found="ignore" />
+		</set>
+
+		<property name="createdDate" type="java.util.Date" />
+		<property name="modifiedDate" type="java.util.Date" />
+	</class>
+</hibernate-mapping>

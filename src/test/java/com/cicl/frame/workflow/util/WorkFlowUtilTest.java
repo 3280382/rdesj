@@ -10,7 +10,7 @@ import org.junit.Test;
 import com.cicl.frame.workflow.dictionary.Constants;
 
 public class WorkFlowUtilTest {
-
+/*
 	@Test
 	public void testGetPooledActorIdDescStringInt() {
 		String actorId = "admin";
@@ -35,5 +35,5 @@ public class WorkFlowUtilTest {
 		roles.add("user");
 		assertEquals(SQL_FindTaskInstancesByPoolActorIds+"(pooledActor.actorId like :actorId1 or pooledActor.actorId like :actorId2)",WorkFlowUtil.getPooledActorIdQueryString(roles, null));
 	}
-
+*/
 }

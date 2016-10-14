@@ -56,7 +56,7 @@ public abstract class AbstractRepositoryTest extends TestCase {
 	}
 
 	protected String[] resources() {
-		return new String[] { "com/ctit/cff/model/DemoData.hbm.xml"};
+		return new String[] { "com/cicl/demo/DemoData.hbm.xml","com/cicl/demo/DemoProvince.hbm.xml","com/cicl/demo/DemoCountry.hbm.xml","com/cicl/demo/DemoDept.hbm.xml"};
 	}
 
 	protected abstract String testData();

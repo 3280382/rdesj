@@ -26,7 +26,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * @author cdzerg@gmail.com
+ * @author 3280382@qq.com
  * @version $Revision:1.0.0, $Date: 2011-7-1 下午02:37:15
  */
 @DirtiesContext
@@ -54,7 +54,7 @@ public class EmailServiceTest {
 	public void sendMailTest() {
 		try {
 			// 发送邮件
-			emailService.sendMail("cdzerg@gmail.com", "cicl", "cicl mail test subject", "cicl mail test content");
+			emailService.sendMail("3280382@qq.com", "rdesjava@163.com", "rdesjava mail test subject", "rdesjava mail test content");
 		} catch (MessagingException e) {
 			fail(e.getMessage());
 		} 
@@ -68,7 +68,7 @@ public class EmailServiceTest {
 			String[] attachmentName = { resource.getFile().getName() };
 			File[] attachment = { resource.getFile() };
 
-			emailService.sendMail("cdzerg@gmail.com", "cicl", "cicl mail test subject(attachment)", "cicl mail test content",
+			emailService.sendMail("3280382@qq.com", "rdesjava@163.com", "rdesjava mail test subject(attachment)", "rdesjava mail test content",
 					attachmentName, attachment);
 		} catch (MessagingException e) {
 			fail(e.getMessage());
@@ -76,14 +76,14 @@ public class EmailServiceTest {
 			fail(e.getMessage());
 		}
 	}
-
+/*
 	@Test
 	public void sendMailFtlTest() {
 		try {
 			// 发送基于ftl模板的邮件
 			HashMap<String, Object> model = new HashMap<String, Object>();
-			model.put("userName", "ciclUser");
-			emailService.sendMailFtl("cdzerg@gmail.com", "cicl", "cicl mail test subject(ftl)", "/email/mailTemplate.ftl", model);
+			model.put("userName", "rdesjava@163.com");
+			emailService.sendMailFtl("3280382@qq.com", "rdesjava@163.com", "rdesjava mail test subject(ftl)", "/email/mailTemplate.ftl", model);
 		} catch (MessagingException e) {
 			fail(e.getMessage());
 		}
@@ -93,14 +93,14 @@ public class EmailServiceTest {
 	public void sendMailFtlWithAttachTest() {
 		try {
 			HashMap<String, Object> model = new HashMap<String, Object>();
-			model.put("userName", "ciclUser");
+			model.put("userName", "rdesjava@163.com");
 
 			// 发送基于ftl模板带附件的邮件
 			Resource resource = new ClassPathResource("/ftl/email/mailAttachment.txt");
 			String[] attachmentName = { resource.getFile().getName() };
 			File[] attachment = { resource.getFile() };
 
-			emailService.sendMailFtl("cdzerg@gmail.com", "cicl", "cicl mail test subject(ftl,attachment)", "/email/mailTemplate.ftl", model,
+			emailService.sendMailFtl("3280382@qq.com", "rdesjava@163.com", "rdesjava mail test subject(ftl,attachment)", "/email/mailTemplate.ftl", model,
 					attachmentName, attachment);
 		} catch (MessagingException e) {
 			fail(e.getMessage());
@@ -108,4 +108,5 @@ public class EmailServiceTest {
 			fail(e.getMessage());
 		}
 	}
+	*/
 }

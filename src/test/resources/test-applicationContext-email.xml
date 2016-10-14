@@ -14,14 +14,14 @@
 	
 	<!-- 邮件发送器 -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="username" value="cicldemo" />
-		<property name="password" value="cicl.demo" />
+		<property name="host" value="smtp.163.com" />
+		<property name="username" value="rdesjava" />
+		<property name="password" value="a11111" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>
-				<!-- 使用gmail smtp server的必须参数 -->
-				<prop key="mail.smtp.starttls.enable">true</prop>
+				<!-- 使用gmail smtp server的必须参数 
+				<prop key="mail.smtp.starttls.enable">true</prop>-->
 			</props>
 		</property>
 	</bean>
